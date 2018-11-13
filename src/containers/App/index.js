@@ -3,30 +3,38 @@ import Header from '../../components/Header'
 import Main from '../../components/Main'
 import Footer from '../../components/Footer'
 import Container from '../../components/Container'
+import Pet from '../../components/Pet'
+import Button from '../../components/Button'
+import Content from '../../components/Content'
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      name: 'Donny',
-      elements: []
+      isMain: true,
+      location: ''
     }
   }
 
-  handleChange = (event) => {
-    this.setState({name: event.target.value});
+  toggleIsMain = () => {
+    this.setState({isMain: !this.state.isMain})
   }
 
-  makeNewSection = event => {
-    this.setState({elements: [...this.state.elements, {title: 'title', text: 'text'}]})
+  changeLocation = (location) => {
+    this.setState({location})
   }
 
   render() {
     return (
       <section>
-        <Header name={this.state.name} />
+        <Header changeLocation={this.changeLocation} />
+        <Button toggleIsMain={this.toggleIsMain} />
         <Container>
-          <Main elements={this.state.elements} makeNewSection={this.makeNewSection} name={this.state.name} handleChange={this.handleChange} />
+          {this.state.location === 'home'
+          ? <Main />
+          : this.state.location === 'pet'
+          ? <Content />
+          : <h2>This works now?</h2>}
         </Container>
         <Footer />
       </section>

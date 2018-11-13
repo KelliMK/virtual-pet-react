@@ -1,13 +1,13 @@
 import React from 'react'
 
-const Header = ({ name }) => {
+const Header = ({changeLocation}) => {
 	return (
 		<header>
-      <h1>Hello, {name}</h1>
+      <h1>Hello</h1>
       <nav>
         <ul>
-          <li>Home</li>
-          <li>Pet</li>
+          <li onClick={() => changeLocation('home')}>Home</li>
+          <li onClick={() => changeLocation('pet')}>Pet</li>
         </ul>
       </nav>
     </header>
