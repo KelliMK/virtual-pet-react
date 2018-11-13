@@ -18,7 +18,7 @@ class App extends Component {
   }
 
   makeNewSection = event => {
-    this.setState({elements: [...this.state.elements, '<section>new things</section>']})
+    this.setState({elements: [...this.state.elements, {title: 'title', text: 'text'}]})
   }
 
   render() {
